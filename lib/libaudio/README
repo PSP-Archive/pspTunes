@@ -1,0 +1,108 @@
+Audio library for psp
+
+Installation:
+Uncompress to a folder and navigae to the folder, type
+make
+then
+make samples
+to compile the samples
+
+Requirements:
+libMad
+libvorbisfile, libvorbis, libogg or libTremor
+libFlac
+
+Configuration of Makefile.audio
+To exclude libmad set
+USE_MAD = 0
+To exclude libflac set
+USE_FLAC = 0
+If libflac is built without ogg support set
+FLAC_OGG_SUPPORTED = 0
+To exclude libogg and libvorbis set
+USE_OGG = 0
+To exclude libtimidity and midi set
+USE_MIDI = 0
+
+Use
+add 
+LIBS += -lpspaudio -lpspaudiocodec -lpspatrac3 -lpspasfparser -lpsppower -lflac [-lvorbisfile -lvorbis -logg|-lvorbisidec] -ltimidity -lmad  -lm
+in your makefile
+include Audio.h and other needed files
+call audioInit(sounds) to initialize(sounds:number of sfx threads to create)
+then
+load*
+playAudio
+etc.
+
+Audio.h
+	audioInit - Initializes the audio library
+	loadWav - loads a wav pcm file(RIFF    WAVE)
+	loadAu - loads an au uncomrpessed file
+	loadAiff - loads an aiff uncomrpessed file
+	playAudio - plays the specified audio
+	pauseAudio - pauses the specified audio
+	stopAudio - stops the specified audio
+	seekAudio - seek the specified audio
+	loopAudio - sets the specified audio to loop
+	freeAudio - frees the specified audio and all its resources
+	etc.
+AudioAT3.h
+	loadAt3 - loads an atrac3/plus file (RIFF    WAVE)
+	loadAa3 - loads an atrac3/plus file (aa3)
+AudioFLAC.h
+	loadFlac - loads a flac file
+	loadFlacAdvance - loads a flac file with advanced options
+AudioMPEG.h
+	loadMp3 - load an mp3 also capable of loading mp2/1 through loadMADMpeg
+	loadMp4 - load an mp4(aac) file
+	loadAac - load an aac(adts) file
+	loadMp3Advance - load an mp3 with advanced options
+	loadMADMpeg - load an mp3/2/1 via libmad
+AudioOGG.h
+	loadOgg - loads an ogg-vorbis file also capable of loading oog-flac via loadFlacAdvance(if libflac is built with ogg support)
+AudioWMA.h
+	loadWma - loads a Windows media audio file (MeBootStart.prx needs to be in the cwd or you can set its path with setBootStartWma(char *location))
+AudioMUSIC.h
+	loadMusic - loads a midi file (requires gus compatible patches and timidity.cfg to play)
+see header files and samples for more info
+
+Don't want to build a library?
+Use the files individually
+Audio.h/c Always required(base library)(libs -lpspaudio -lpspaudiocodec -lpsppower)
+
+AudioMPEG.h/c AudioMAD.c mpeg audio(libs -lm)
+add -DSANE to CFLAGS in your makefile to exclude AudioMAD
+
+AudioAt3.h/c atrac audio(libs -lpspatrac3) 
+
+AudioFLAC.h/c flac audio(libs -lflac -lm (-logg if built with ogg support)) 
+add -DOGG_FLAC to CFLAGS in makefile for ogg-flac support
+
+AudioOGG.h/c ogg audio(requires -lvorbisfile -lvorbis -logg(or -lvorbisidec if built wtih libTremor)) 
+add -DOGG_FLAC to CFLAGS in makefile for ogg-flac support
+
+AudioWMA.h/c wma (libs -lpspasfparser) MeBootStart.prx
+
+AudioMUSIC.h/c midi (libs -ltimidity -lm)
+
+
+Any bugs, comments or suggestions email me mowglisanu@gmail.com
+
+Thanks to:
+	cooleyes: For all his samples to decode via the ME
+	moonlight: For his sample to decode via the ME
+	Heimdall: For MinPSP
+	hrimfaxi: For his sample to decode via the ME
+	Insert_Witty_Name: For general information
+	Raphael: For general information
+	TyRaNiD: For pspLink
+	The people who ported doom(where I got libtimidty)
+Also
+Arnold
+sakya
+AlphaDingDong
+Noware
+dan69
+Arshia001
+and the entire psp homebrew community

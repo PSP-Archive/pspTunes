@@ -1,0 +1,134 @@
+10
+
+dir
+0
+https://outerheaven/svn/apps/pspTunes/trunk/libs/OSLib_MOD_1_1_1/samples
+https://outerheaven/svn/apps
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c5abb966-87d4-e54a-acad-79dcb521bc81
+
+
+
+
+
+
+
+empty
+
+dialog
+dir
+
+
+
+add
+
+saveAndLoad
+dir
+
+
+
+add
+
+imageTest
+dir
+
+
+
+add
+
+intraFont
+dir
+
+
+
+add
+
+net
+dir
+
+
+
+add
+
+bkg.png
+file
+
+
+
+add
+
+
+
+
+
+has-props
+has-prop-mods
+
+sfont
+dir
+
+
+
+add
+
+rectAndFonts
+dir
+
+
+
+add
+
+helloWorld
+dir
+
+
+
+add
+
+README.TXT
+file
+
+
+
+add
+
+internetBrowser
+dir
+
+
+
+add
+
+OSK
+dir
+
+
+
+add
+
+adhoc
+dir
+
+
+
+add
+

@@ -1,0 +1,47 @@
+=====
+
+----------------------------------------------------------
+---------	pspTunes - MP3 Player		----------
+----------------------------------------------------------
+
+
+=============================
+1. Sobre los skins
+=============================
+
+Si bien no se ha implementado de una forma tan intuitiva, se puede cambiar la apariencia del programa mediante skins.
+Esto se hizo pensando en uno de los objetivos de la aplicación que era, "crear una interfaz sencilla y atractiva". La parte de que sea atractiva es subjetiva, por lo que el usuario puede cambiar la forma en que se ve el programa a su gusto; esto claro si puede o desea hacerlo.
+
+
+=============================
+2. Hacer un nuevo skin
+=============================
+
+Para hacer un skin se deben modificar las imagenes dentro de la carpeta "gui" (esto incluye subcarpetas). Se recomienda no cambiar los tamaños de las imagenes, ya que eso no se valida dentro del programa y puede verse de una manera no deseada.
+Si falta alguno de los archivos, la aplicacion no iniciará.
+
+Se recomienda hacer una copia de la carpeta "gui" para conservar una copia del skin anterior.
+
+
+=============================
+3. Cambiar el skin
+=============================
+
+Si se cambian directamente los archivos de la carpeta "gui", los cambios se verán reflejados al momento de reiniciar la aplicación.
+
+Si se posee una carpeta con la misma estructura de archivos solamente debe sobreescribirse, en dado caso la carpeta no se llame "gui" debe renombrarse.
+
+
+=============================
+4. Ejemplo
+=============================
+
+Dentro de la carpeta "skins" de este mismo directorio, se encuentra un skin para el programa. 
+
+Si desea probarlo:
+
+- Haga una copia de la carpeta "gui" actual dentro de la carpeta de la aplicacion.
+- Copie la carpeta "test" a la carpeta de la aplicacion dentro del PSP (/PSP/GAME/PSPTUNES/).
+- Elimine la carpeta "gui" y cambie el nombre de "test" por "gui".
+
+Al iniciar la aplicacion nuevamente, se verá el nuevo skin.

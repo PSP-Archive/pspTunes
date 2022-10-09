@@ -1,0 +1,107 @@
+ # makefile
+ #
+ # MUSAUDIO Version 1 by mowglisanu
+ #
+ # Copyright (C) 2009 Musa Mitchell. mowglisanu@gmail.com
+ #
+ # This program is free software; you can redistribute it and/or modify
+ # it under the terms of the GNU General Public License as published by
+ # the Free Software Foundation; either version 2 of the License, or
+ # (at your option) any later version.
+ #
+ # This program is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU General Public License for more details.
+ #
+ # You should have received a copy of the GNU General Public License
+ # along with this program; if not, write to the Free Software
+ # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+ #
+
+TARGET_LIB = libaudio.a
+OBJS = Audio.o \
+       AudioMPEG.o \
+       AudioMAD.o \
+       AudioAT3.o \
+       AudioFLAC.o \
+       AudioOGG.o \
+       AudioMUSIC.o \
+       AudioWMA.o
+       
+USE_TREMOR = 1
+USE_MAD = 1
+USE_FLAC = 1
+USE_OGG = 1
+USE_MIDI = 1
+FLAC_OGG_SUPPORTED = 1
+
+INCDIR =
+CFLAGS = -O2 -G0 -Wall -g -Dlibaudio -DNO_DEBUG
+CXXFLAGS = $(CFLAGS) -fno-exceptions -fno-rtti
+ASFLAGS = $(CFLAGS)
+
+LIBDIR =
+LDFLAGS =
+LIBS = -lpspaudio -lpspaudiocodec -lpspatrac3 -lpspasfparser -lpsppower
+
+ifeq ($(USE_TREMOR), 1)
+ifeq ($(USE_FLAC), 1)
+ifeq ($(FLAC_OGG_SUPPORTED), 1)
+USE_FLAC = 0
+endif
+endif
+LIBS += -lvorbisidec
+CFLAGS += -DUSE_TREMOR
+USE_OGG = 0
+endif
+
+ifeq ($(USE_OGG), 1)
+ifeq ($(USE_FLAC), 1)
+LIBS += -lflac
+ifeq ($(FLAC_OGG_SUPPORTED, 1)
+CFLAGS += -DOGG_FLAC
+endif
+endif
+LIBS += -lvorbisfile -lvorbis -logg
+else
+ifneq ($(FLAC_OGG_SUPPORTED), 1)
+ifeq ($(USE_FLAC), 1)
+LIBS += -lflac
+endif
+else
+USE_FLAC = 0
+endif
+endif
+
+ifeq ($(USE_MIDI), 1)
+LIBS += -ltimidity
+else
+CFLAGS += -DNO_MIDI
+endif
+ifeq ($(USE_MAD), 1)
+LIBS += -lmad
+else
+CFLAGS += -DSANE
+endif
+ifeq ($(USE_FLAC), 0)
+CFLAGS += -DNO_FLAC
+endif
+ifeq ($(USE_OGG), 0)
+ifeq ($(USE_TREMOR), 0)
+CFLAGS += -DNO_OGG
+endif
+endif
+
+LIBS += -lm
+
+PSPDIR=$(shell psp-config --psp-prefix)
+PSPSDK=$(shell psp-config --pspsdk-path)
+include $(PSPSDK)/lib/build.mak
+
+install: $(TARGET_LIB)
+	@echo Installing libaudio into $(PSPDIR)
+	@mkdir -p $(PSPDIR)/include/Audio
+	@cp *.h $(PSPDIR)/include/Audio
+	@cp libaudio.a  $(PSPDIR)/lib
+	@echo Done

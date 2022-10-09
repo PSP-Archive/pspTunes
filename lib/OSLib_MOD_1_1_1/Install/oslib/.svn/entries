@@ -1,0 +1,197 @@
+10
+
+dir
+0
+https://outerheaven/svn/apps/pspTunes/trunk/libs/OSLib_MOD_1_1_1/Install/oslib
+https://outerheaven/svn/apps
+add
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+c5abb966-87d4-e54a-acad-79dcb521bc81
+
+
+
+
+
+
+
+empty
+
+usb.h
+file
+
+
+
+add
+
+sfont.h
+file
+
+
+
+add
+
+drawing.h
+file
+
+
+
+add
+
+osk.h
+file
+
+
+
+add
+
+messagebox.h
+file
+
+
+
+add
+
+saveload.h
+file
+
+
+
+add
+
+dialog.h
+file
+
+
+
+add
+
+audio.h
+file
+
+
+
+add
+
+vfpu_ops.h
+file
+
+
+
+add
+
+bgm.h
+file
+
+
+
+add
+
+oslmath.h
+file
+
+
+
+add
+
+oslib.h
+file
+
+
+
+add
+
+vram_mgr.h
+file
+
+
+
+add
+
+keys.h
+file
+
+
+
+add
+
+libpspmath
+dir
+
+
+
+add
+
+map.h
+file
+
+
+
+add
+
+intraFont
+dir
+
+
+
+add
+
+browser.h
+file
+
+
+
+add
+
+text.h
+file
+
+
+
+add
+
+net.h
+file
+
+
+
+add
+
+VirtualFile.h
+file
+
+
+
+add
+
+adhoc
+dir
+
+
+
+add
+
+ccc.h
+file
+
+
+
+add
+

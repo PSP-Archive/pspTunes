@@ -1,0 +1,8 @@
+prevoius versions ?
+version 1: 14/01/10
+	added suspend/resume support support
+	added aa3 support
+	added wma support
+	removed libpspaudiolib dependancy
+	some low level changes
+	some bug fixes
